@@ -1,0 +1,49 @@
+{
+  "name": "santa",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@clerk/nextjs": "^6.3.3",
+    "@fortawesome/fontawesome-free": "^6.7.1",
+    "@types/express": "^5.0.0",
+    "axios": "^1.7.7",
+    "busboy": "^1.6.0",
+    "dotenv": "^16.4.5",
+    "formidable": "^3.5.2",
+    "lodash": "^4.17.21",
+    "mongoose": "^8.8.1",
+    "multer": "^1.4.5-lts.1",
+    "multiparty": "^4.2.3",
+    "next": "14.2.18",
+    "next-connect": "^1.0.0",
+    "openai": "^4.72.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-hot-toast": "^2.4.1",
+    "react-snowfall": "^2.2.0",
+    "react-speech-recognition": "^3.10.0",
+    "regenerator-runtime": "^0.14.1",
+    "uuid": "^11.0.3"
+  },
+  "devDependencies": {
+    "@types/formidable": "^3.4.5",
+    "@types/lodash": "^4.17.13",
+    "@types/mongoose": "^5.11.97",
+    "@types/multer": "^1.4.12",
+    "@types/multiparty": "^4.2.1",
+    "@types/node": "^20.17.9",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.18",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}
