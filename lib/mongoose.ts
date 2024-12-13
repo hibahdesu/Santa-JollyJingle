@@ -1,9 +1,9 @@
-//lib/mongoose
 import mongoose from 'mongoose';
 
 const connectToDatabase = async () => {
   if (mongoose.connection.readyState >= 1) {
-    // If already connected or in the process of connecting, return early
+    // If already connected or connecting, return early
+    console.log('MongoDB is already connected');
     return;
   }
 
@@ -14,8 +14,11 @@ const connectToDatabase = async () => {
       throw new Error('MongoDB URI is not defined in environment variables.');
     }
 
-    // Connect to MongoDB without the deprecated options
-    await mongoose.connect(mongoUri);
+    console.log('Connecting to MongoDB...');
+    await mongoose.connect(mongoUri, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
 
     console.log('MongoDB connected');
   } catch (error) {
