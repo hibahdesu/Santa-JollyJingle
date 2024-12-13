@@ -2,7 +2,6 @@ import mongoose from 'mongoose';
 
 const connectToDatabase = async () => {
   if (mongoose.connection.readyState >= 1) {
-    // If already connected or connecting, return early
     console.log('MongoDB is already connected');
     return;
   }
@@ -18,6 +17,9 @@ const connectToDatabase = async () => {
     await mongoose.connect(mongoUri, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      connectTimeoutMS: 10000, // Timeout for establishing connection
+      socketTimeoutMS: 45000,  // Timeout for inactivity, i.e., socket gets closed after 45 seconds of inactivity
+      serverSelectionTimeoutMS: 5000, // Timeout for selecting the server, useful in case of network latency
     });
 
     console.log('MongoDB connected');
