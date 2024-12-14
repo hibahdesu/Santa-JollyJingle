@@ -15,7 +15,9 @@ const connectToDatabase = async () => {
     }
     console.log('MongoDB URI:', process.env.MONGODB_URI); 
     // Connect to MongoDB without the deprecated options
-    await mongoose.connect(mongoUri);
+    await mongoose.connect(mongoUri, {
+      serverSelectionTimeoutMS: 5000, // Timeout after 5 seconds if no servers are found
+    });
 
     console.log('MongoDB connected');
   } catch (error) {
