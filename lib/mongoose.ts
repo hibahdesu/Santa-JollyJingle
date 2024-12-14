@@ -13,7 +13,7 @@ const connectToDatabase = async () => {
     if (!mongoUri) {
       throw new Error('MongoDB URI is not defined in environment variables.');
     }
-
+    console.log('MongoDB URI:', process.env.MONGODB_URI); 
     // Connect to MongoDB without the deprecated options
     await mongoose.connect(mongoUri);
 
