@@ -1,11 +1,13 @@
-//lib/mongoose
+// lib/mongoose.ts
 import mongoose from 'mongoose';
 
 const connectToDatabase = async () => {
+  // Check if already connected or in the process of connecting
   if (mongoose.connection.readyState >= 1) {
-    // If already connected or in the process of connecting, return early
     return;
   }
+
+  const startTime = Date.now();  // Start time for the MongoDB connection attempt
 
   try {
     const mongoUri = process.env.MONGODB_URI;
@@ -14,12 +16,18 @@ const connectToDatabase = async () => {
       throw new Error('MongoDB URI is not defined in environment variables.');
     }
 
-    // Connect to MongoDB without the deprecated options
+    // Connect to MongoDB
     await mongoose.connect(mongoUri);
 
-    console.log('MongoDB connected');
+    const endTime = Date.now();  // End time after connection is successful
+    const timeTaken = endTime - startTime;  // Time taken for the connection
+
+    console.log(`MongoDB connected in ${timeTaken} ms`);
   } catch (error) {
-    console.error('Error connecting to MongoDB:', error);
+    const endTime = Date.now();  // End time if the connection fails
+    const timeTaken = endTime - startTime;
+
+    console.error(`Error connecting to MongoDB in ${timeTaken} ms:`, error);
     throw new Error('Failed to connect to MongoDB');
   }
 };
